@@ -14,10 +14,11 @@ if defined?(ActiveRecord::Base)
   ActiveRecord::Base.send(:include, ActsAsTenant::ModelExtensions)
 end
 
-if defined?(ActionController::Base)
+if defined?(ActionController::API)
+  ActionController::API.extend ActsAsTenant::ControllerExtensions
+elsif defined?(ActionController::Base)
   ActionController::Base.extend ActsAsTenant::ControllerExtensions
 end
 
 module ActsAsTenant
 end
-  
